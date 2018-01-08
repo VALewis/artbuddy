@@ -1,0 +1,22 @@
+{
+  "name": "artbuddy",
+  "version": "1.0.0",
+  "description": "cultural match",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/VALewis/artbuddy.git"
+  },
+  "keywords": [
+    "art"
+  ],
+  "author": "VALewis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VALewis/artbuddy/issues"
+  },
+  "homepage": "https://github.com/VALewis/artbuddy#readme"
+}
