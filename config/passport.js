@@ -18,7 +18,7 @@ module.exports = function(passport) {
     //deserialize user from session
     passport.deserializeUser((id, done) => {
         console.log(id)
-        User.findbyId(id, (err, user) => {
+        User.findById(id, (err, user) => {
             done(err, user);
         });
     });
@@ -41,13 +41,13 @@ module.exports = function(passport) {
                     } else {
                         console.log('new local user')
                         //create user
-                        user = new User();
+                        newUser = new User();
                         // set user's local credentials
-                        user.email = req.body.email;
-                        user.password = req.body.password;
+                        newUser.email = req.body.email;
+                        newUser.password = req.body.password;
 
                         //save user
-                        user.save((newUser) => {
+                        newUser.save((newUser) => {
                             console.log('the user is:', newUser);
                             passport.authenticate()
                             return done(null, newUser);

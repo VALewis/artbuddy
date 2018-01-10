@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/VALewis/artbuddy#readme",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
     "connect-flash": "^0.1.1",

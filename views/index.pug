@@ -1,21 +1,60 @@
 html
 	head
 		title Artbuddy authentication
+
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
+
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+		link(rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" )
 		link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito")
+			
 		script(src="https://use.fontawesome.com/937272718b.js")
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		//- style(type='text/css')
-		//-   include ../public/headers.css
+		
+		style(type='text/css')
+			include ../public/index.css
 
 	body
-		div(class='container')
-			div(class='fa fa-lock')
-				h1 Art Buddy 
+		div(class="container")
 
-				p Login or register with:
+			div(class="omb_login")
+				h2(class="fs-title") Login or 
+					a(href='/signup') Sign up
+				div(class="row omb_row-sm-offset-3 omb_socialButtons")
+					div(class="col-xs-4 col-sm-2")
+						a(href="#" class="btn btn-lg btn-block omb_btn-facebook")
+							i(class="fa fa-facebook visible-xs")
+							span(class="hidden-xs") Facebook 			
+					div(class="col-xs-4 col-sm-2")
+						a(href="#" class="btn btn-lg btn-block omb_btn-twitter")
+							i(class="fa fa-twitter visible-xs")
+							span(class="hidden-xs") Twitter
+					div(class="col-xs-4 col-sm-2")
+						a(href="#" class="btn btn-lg btn-block omb_btn-google")
+							i(class="fa fa-google-plus visible-xs")
+							span(class="hidden-xs") Google+
 
-				a(href="/login" class="btn btn-default" class="fa fa-user") Login through Art Buddy 
-				a(href="/signup" class="btn btn-default" class="fa fa-user") Signup through Art Buddy
+				div(class="row omb_row-sm-offset-3 omb_loginOr")
+					div(class="col-xs-12 col-sm-6")
+						hr(class="omb_hrOr")
+						span(class='fs-title' id="omb_spanOr") or
+				
+				form(class="omb_loginForm" id="msform" method="POST" action='/signup')
+					fieldset
+						div(class="input-group")
+							span(class="input-group-addon") 
+								i(class="fa fa-user")
+							input(type="text" class="form-control" name="username" placeholder="Email address")
+						span(class="help-block")
+											
+						div(class="input-group")
+							span(class="input-group-addon")
+								i(class="fa fa-lock")
+							input(type="password" class="form-control" name="password" placeholder="Password")
+						div
+							p
+
+						input(type='submit' class="btn btn-lg btn-primary btn-block" value='Login')
+
+			
