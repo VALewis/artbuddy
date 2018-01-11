@@ -1,3 +1,9 @@
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
 body {
 	font-family: montserrat, arial, verdana;
 	height: 100%;
@@ -5,12 +11,23 @@ body {
 	
 	/*background = gradient + image pattern combo*/
 	background: 
-		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+		linear-gradient(rgba(227, 228, 232, 1), rgba(235, 218, 69, 1));
 	}
 	@media (min-width: 768px) {
 	    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
 	        margin-left: 25%;
 	    }
+	}
+
+	div.logo {/*
+		width: 50px;
+		height: 50px;*/
+	/*	background-color: #EBDA45;*/
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 0;
+		position: relative;
+		display: block;
 	}
 
 	/*headings*/
@@ -22,9 +39,27 @@ body {
 		text-align: center;
 		line-height: 300%;
 	}
+	a {
+		color: #FF5337;
+	}
+	
+
+	/*buttons*/
+	#action-button {
+		font-family: montserrat, arial, verdana;
+		background: #FF5337;
+		font-weight: bold;
+		color: white;
+		border: 0 none;
+		border-radius: 3px;
+		cursor: pointer;
+		padding: 10px 5px;
+		margin: 10px 5px;
+	}
 	.omb_login .omb_socialButtons a {
 		color: white; // In yourUse @body-bg 
 		opacity:0.9;
+		font-family: montserrat, arial, verdana;
 	}
 	.omb_login .omb_socialButtons a:hover {
 	    color: white;
@@ -34,12 +69,11 @@ body {
 	.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
 	.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
 
-
 	.omb_login .omb_loginOr {
 		position: relative;
 		font-size: 1.5em;
 		color: #aaa;
-		margin-top: 1em;
+		margin-top: 5px;
 		margin-bottom: 1em;
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
@@ -56,6 +90,7 @@ body {
 		left: 50%;
 		top: -0.6em;
 		margin-left: -1.5em;
+		background-color: white;
 		width: 3em;
 		text-align: center;
 	}			
@@ -76,10 +111,8 @@ body {
 		box-sizing: border-box;
 		width: 80%;
 		margin: 0 10%;
-		
-		/*stacking fieldsets above each other*/
-		position: relative;
 	}
+		
 	.omb_login .omb_loginForm  .help-block {
 	    color: red;
 	}

@@ -1,35 +1,38 @@
+// home page with login links and form (render page and process info)
+const bcrypt = require('bcrypt')
+
 module.exports = (app, client) => {
-	app.get("/", (req, res) => {
-				res.render ("login")
+	app.get('/', (req, res) => {
+	    res.render('index', {
+	    	session: req.session.user
+		});
+	});
+	app.post('/', function(req, res) {
+		client.query(`SELECT * from user_accounts WHERE email = '${req.body.email}'`, (err, result) => {
+			if (err) throw (err)
+			else {
+				if (result.rows.length === 0){
+					console.log('Specified user does not exist')
+				}
+				else {
+					console.log('Specified user exists', result.rows)
+					bcrypt.compare(req.body.password, result.rows[0].password, (err, query) => {
+						if (query) {
+							req.session.user = {
+								fullname: result.rows[0].fullname,
+								email: result.rows[0].email,
+								id: result.rows[0].id
+							},
+							res.status(200).send({message: 'You have successfully logged in'})
+							res.redirect('/profile')
+						}
+						else {
+							res.status(200).send({message: 'Password is incorrect, try again'})			
+							res.redirect('/')}
+							
+					})
+				}
+			}
+		})
 	})
-}
-
-
-//////////////////////////////////
-			//   FB.getLoginStatus(function(response) {
-			//     if (response.status === 'connected') {
-			//       console.log('Logged in.');
-			//     }
-			//     else {
-			//       FB.login();
-			//     }
-			//   }); 
-			// }; //allows users to register or sign in to app with Facebook.
-
-			// function myFacebookLogin() {
-			//   FB.login(function(){
-			//     if (response.status === 'connected') {
-			//         res.render("")
-			//     } else {
-			//       res.render("")
-			//     }
-			//   }, {scope: 'public_profile,email'});
-			// } // trigger a login dialog that'll request the relevant permissions
-
-			// (function(d, s, id){
-			// 	 var js, fjs = d.getElementsByTagName(s)[0];
-			// 	 if (d.getElementById(id)) {return;}
-			// 	 js = d.createElement(s); js.id = id;
-			// 	 js.src = "https://connect.facebook.net/en_US/sdk.js";
-			// 	 fjs.parentNode.insertBefore(js, fjs);
-			// 	 }(document, 'script', 'facebook-jssdk'));  
+};

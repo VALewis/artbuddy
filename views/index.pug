@@ -17,7 +17,6 @@ html
 
 	body
 		div(class="container")
-
 			div(class="omb_login")
 				h2(class="fs-title") Login or 
 					a(href='/signup') Sign up
@@ -35,13 +34,12 @@ html
 							i(class="fa fa-google-plus visible-xs")
 							span(class="hidden-xs") Google+
 
-				div(class="row omb_row-sm-offset-3 omb_loginOr")
-					div(class="col-xs-12 col-sm-6")
-						hr(class="omb_hrOr")
-						span(class='fs-title' id="omb_spanOr") or
-				
-				form(class="omb_loginForm" id="msform" method="POST" action='/signup')
+				form(class="omb_loginForm" id="msform" method="POST" action='/')
 					fieldset
+						div(class="row omb_row-sm-offset-3 omb_loginOr")
+							hr(class="omb_hrOr")
+							span(class='fs-title' id="omb_spanOr") or
+						
 						div(class="input-group")
 							span(class="input-group-addon") 
 								i(class="fa fa-user")
@@ -55,6 +53,7 @@ html
 						div
 							p
 
-						input(type='submit' class="btn btn-lg btn-primary btn-block" value='Login')
-
-			
+						input(type='submit' id='action-button' class="btn btn-lg btn-primary btn-block" value='Login')
+	
+		div(class='logo')
+				img(src='./logo2Mini.jpg')

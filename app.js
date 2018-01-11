@@ -11,7 +11,7 @@ var cookieparser = require('cookie-parser')
 var morgan = require('morgan');
 var session = require('express-session');
 require('dotenv').load();
-// var bcrypt = require('bcrypt')
+var bcrypt = require('bcrypt')
 
 // configuration ==================
 const client = new Client({
@@ -25,21 +25,21 @@ const client = new Client({
 
 client.connect((err) => console.log(err));
 
-// // initializing database ==========
-// const query1 ={
-//   text:`CREATE TABLE IF NOT EXISTS users(
-//     id serial primary key,
-//     fullname text,
-//     email text,
-//     username text,    
-//     password text,
-//     age integer,
-//     gender text);`
-// }
+// initializing database ==========
+const query1 ={
+  text:`CREATE TABLE IF NOT EXISTS user_accounts(
+    id serial primary key,
+    fullname text,
+    email text,  
+    password text not null,
+    age integer,
+    gender text);` 
+    // TRUNCATE user_interests, user_accounts;`
+}
 
-// client.query(query1, (err, result) => {
-//   if (err) throw err
-// });
+client.query(query1, (err, result) => {
+  if (err) throw err
+});
 
 // set up express app =============
 app.use(morgan('dev'));
@@ -61,7 +61,10 @@ app.use(flash());
 
 // routes =========================
 // require('./config/passport')(passport);
-require('./app/routes.js')(app, passport);
+// require('./app/routes.js')(app, passport);
+require('./routes/index.js')(app, client)
+require('./routes/signup.js')(app, client)
+// require('./routes/logout')(app)
 
 // launch app =====================
 app.listen(process.env.webport, () => {
