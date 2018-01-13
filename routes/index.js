@@ -8,7 +8,9 @@ module.exports = (app, client) => {
 		});
 	});
 	app.post('/', function(req, res) {
+		console.log(req.body.email)
 		client.query(`SELECT * from user_accounts WHERE email = '${req.body.email}'`, (err, result) => {
+			console.log(result)
 			if (err) throw (err)
 			else {
 				if (result.rows.length === 0){
@@ -23,16 +25,13 @@ module.exports = (app, client) => {
 								email: result.rows[0].email,
 								id: result.rows[0].id
 							},
-							res.status(200).send({message: 'You have successfully logged in'})
 							res.redirect('/profile')
 						}
-						else {
-							res.status(200).send({message: 'Password is incorrect, try again'})			
-							res.redirect('/')}
-							
-					})
-				}
-			}
-		})
-	})
+						else {							
+							res.redirect('/')}							
+					});
+				};
+			};
+		});
+	});
 };

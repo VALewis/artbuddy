@@ -3,9 +3,10 @@ module.exports = (app) => {
     app.get('/logout', (req, res) => {
         if (req.session.user) {
             req.session.destroy()
-            res.render('/logout')
+            res.render('logout')
         } else {
-            res.redirect('/')
+        	console.log('something is wrong')
+            // res.redirect('/')
         };
     });
 };

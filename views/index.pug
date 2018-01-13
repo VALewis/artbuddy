@@ -11,11 +11,19 @@ html
 			
 		script(src="https://use.fontawesome.com/937272718b.js")
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		
+		script(type="text/javascript")
+			include ../public/js/textChange.js
+
 		style(type='text/css')
-			include ../public/index.css
+			include ../public/css/index.css
 
 	body
+		div(class='logo')
+			img(src='./img/logo4.jpg')
+		div(class='centerDiv')
+					h1.title meet your <span class="txt-rotate" data-period="2000" data-rotate='[ "art", "music", "theatre", "dance", "cultural" ]'>
+						</span> friend
+
 		div(class="container")
 			div(class="omb_login")
 				h2(class="fs-title") Login or 
@@ -43,7 +51,7 @@ html
 						div(class="input-group")
 							span(class="input-group-addon") 
 								i(class="fa fa-user")
-							input(type="text" class="form-control" name="username" placeholder="Email address")
+							input(type="text" class="form-control" name="email" placeholder="Email address")
 						span(class="help-block")
 											
 						div(class="input-group")
@@ -55,5 +63,3 @@ html
 
 						input(type='submit' id='action-button' class="btn btn-lg btn-primary btn-block" value='Login')
 	
-		div(class='logo')
-				img(src='./logo2Mini.jpg')

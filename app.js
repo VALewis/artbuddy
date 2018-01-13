@@ -1,19 +1,15 @@
-// set up necessary tools ========
-var express = require('express');
-var app = express();
+// configuration ==================
+const express = require('express');
+const app = express();
 const pg = require('pg');
-var passport = require('passport');
-var flash = require('connect-flash')
+const bodyParser = require('body-parser')
+const cookieparser = require('cookie-parser')
+const morgan = require('morgan');
+const session = require('express-session');
+require('dotenv').load();
+const bcrypt = require('bcrypt')
 
 const Client = pg.Client
-const bodyParser = require('body-parser')
-var cookieparser = require('cookie-parser')
-var morgan = require('morgan');
-var session = require('express-session');
-require('dotenv').load();
-var bcrypt = require('bcrypt')
-
-// configuration ==================
 const client = new Client({
   user: process.env.appUser,
   host: process.env.host,
@@ -26,22 +22,37 @@ const client = new Client({
 client.connect((err) => console.log(err));
 
 // initializing database ==========
-const query1 ={
+const query1 = {
   text:`CREATE TABLE IF NOT EXISTS user_accounts(
     id serial primary key,
     fullname text,
     email text,  
     password text not null,
     age integer,
-    gender text);` 
-    // TRUNCATE user_interests, user_accounts;`
+    gender text);`
 }
+
+// TRUNCATE user_interests, user_accounts;
+
+// const query2 = {
+//   text:`CREATE TABLE IF NOT EXISTS interests(
+//     hobby text,
+//     email text,  
+//     password text not null,
+//     age integer,
+//     gender text);`
+// }
+
 
 client.query(query1, (err, result) => {
   if (err) throw err
 });
 
-// set up express app =============
+// client.query(query2, (err, result) => {
+//   if (err) throw err
+// });
+
+// views/middleware =============
 app.use(morgan('dev'));
 app.use(cookieparser());
 app.use(express.static('public'));
@@ -49,22 +60,18 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.set('view engine', 'pug')
 
-// requirements passport ==========
+// sessions ==========
 app.use(session({
   secret: '23j354jl45j',
   resave: true,
   saveUnininitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
 
 // routes =========================
-// require('./config/passport')(passport);
-// require('./app/routes.js')(app, passport);
 require('./routes/index.js')(app, client)
 require('./routes/signup.js')(app, client)
-// require('./routes/logout')(app)
+require('./routes/profile.js')(app, client)
+require('./routes/logout')(app)
 
 // launch app =====================
 app.listen(process.env.webport, () => {

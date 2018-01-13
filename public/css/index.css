@@ -11,25 +11,35 @@ body {
 	
 	/*background = gradient + image pattern combo*/
 	background: 
-		linear-gradient(rgba(227, 228, 232, 1), rgba(235, 218, 69, 1));
-	}
+		linear-gradient(to top, #E3E4E8, #EBDA45 40% );
+/*			rgba(227, 228, 232, 1), rgba(235, 218, 69, 1));
+*/	}
+
 	@media (min-width: 768px) {
 	    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
 	        margin-left: 25%;
 	    }
 	}
 
-	div.logo {/*
-		width: 50px;
-		height: 50px;*/
-	/*	background-color: #EBDA45;*/
+	.logo {
 		text-align: center;
 		margin: 0 auto;
-		margin-bottom: 0;
 		position: relative;
 		display: block;
 	}
 
+	.centerDiv {
+		color: white;
+		text-align: center;
+		margin: 0 auto;
+		position: relative;
+		display: block;
+	}
+/*	div.container {
+		position: relative;
+		display: block;
+		float: left;
+	}*/
 	/*headings*/
 	.fs-title {
 		font-size: 15px;
