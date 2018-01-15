@@ -1,79 +1,57 @@
-// configuration ==================
+// configuration ====================================================
 const express = require('express');
 const app = express();
-const pg = require('pg');
-const bodyParser = require('body-parser')
-const cookieparser = require('cookie-parser')
-const morgan = require('morgan');
-const session = require('express-session');
+const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser');
+const cookieparser = require('cookie-parser');
 require('dotenv').load();
-const bcrypt = require('bcrypt')
+const pg = require('pg');
+const session = require('express-session');
+const Sequelize = require('sequelize');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// connection to database using postgres and sequelize ==============
 const Client = pg.Client
-const client = new Client({
-  user: process.env.appUser,
-  host: process.env.host,
-  password: process.env.password,
-  database: process.env.database,
-  webport: process.env.webport,
-  port: 5432
+const client = new Client ({
+	user: process.env.appUser,
+	host: process.env.host,
+	password: process.env.password,
+	database: process.env.database,
+	webport: process.env.webport,
+	port: 5432 
 });
 
-client.connect((err) => console.log(err));
+client.connect();
 
-// initializing database ==========
-const query1 = {
-  text:`CREATE TABLE IF NOT EXISTS user_accounts(
-    id serial primary key,
-    fullname text,
-    email text,  
-    password text not null,
-    age integer,
-    gender text);`
-}
+const dbSeq = require('./databases/dbSequelize.js')
+dbSeq.sequelize.sync()
 
-// TRUNCATE user_interests, user_accounts;
-
-// const query2 = {
-//   text:`CREATE TABLE IF NOT EXISTS interests(
-//     hobby text,
-//     email text,  
-//     password text not null,
-//     age integer,
-//     gender text);`
-// }
+// sessions and sequelize store =====================================
+app.use(session({
+	store: new SequelizeStore({
+		db: dbSeq.sequelize
+	}),
+	secret: '23j354jl45j',
+	resave: true,
+	saveUnininitialized: true
+}));
 
 
-client.query(query1, (err, result) => {
-  if (err) throw err
-});
-
-// client.query(query2, (err, result) => {
-//   if (err) throw err
-// });
-
-// views/middleware =============
-app.use(morgan('dev'));
+// views/middleware =================================================
 app.use(cookieparser());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.set('view engine', 'pug')
 
-// sessions ==========
-app.use(session({
-  secret: '23j354jl45j',
-  resave: true,
-  saveUnininitialized: true
-}));
-
-// routes =========================
-require('./routes/index.js')(app, client)
-require('./routes/signup.js')(app, client)
+// routes ===========================================================
+require('./routes/index.js')(app, dbSeq, bcrypt)
+require('./routes/signup.js')(app, dbSeq, bcrypt)
 require('./routes/profile.js')(app, client)
+require('./routes/buddymatch.js')(app, dbSeq)
 require('./routes/logout')(app)
 
-// launch app =====================
+// launch app =======================================================
 app.listen(process.env.webport, () => {
-    console.log('listening to port', process.env.webport)
+	console.log('listening to port', process.env.webport)
 });

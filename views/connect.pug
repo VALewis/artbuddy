@@ -1,6 +1,6 @@
 html
 	head
-		title Artbuddy personal profile
+		title Artbuddy connect/invitation
 
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
@@ -11,31 +11,10 @@ html
 			
 		script(src="https://use.fontawesome.com/937272718b.js")
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-		
+
 		//- style(type='text/css')
-		//- 	include ../public/profile.css
+		//- 	include ../public/css/?.css
 
 	body
-		div(class='container-intro')
-			//- - let fullName = '#{user.fullname}';
-			//- - let firstName = fullname.split(" ")[0];
-			h2 Hi #{firstName}, good to see you!
-			div(class='profile')
-				h3 Profile
-				div(id='profile-image')
-					img(src=`${user.profileImage}`)
-				h4 Name
-				p #{user.fullname}
-				br
-				h4 Email
-				p #{user.email}
-				br
-				
-			h2 Get started and meet 
-				a(href='/buddymatch') your art buddy!
 
-
-		a(href='/logout') Log out
-
-
-	
+		

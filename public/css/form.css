@@ -20,7 +20,7 @@ a {
 
 /*form styles*/
 #msform {
-	width: 400px;
+	width: 600px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
@@ -81,13 +81,43 @@ a {
 	}
 }*/
 
-.button-label {
+div.gender label.button-label {
 	display: inline-block;
 	border-radius: 3px;
 	font-family: montserrat;
 	font-size: 13px;
-	margin: 0 10px 20px 10px;
-	width: 65px;
+	text-align: center;
+	margin: 0 10px 20px 10px;	
+	padding-top: 10px;
+	width: 90px;
+	color: #2C3E50;
+	border-radius: 0.25em;
+	background: #efefef;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+.form-group h6 {
+	text-align: left;
+	width: 200px;
+	margin-right: 0;
+}
+.input {
+	text-align: left;
+}
+.button-label {
+	display: inline-block;
+	border-radius: 3px;
+	font-family: montserrat;
+	font-size: 9px;
+	margin: 0 6px 6px;
+	text-align: center;	
+	word-wrap: break-word;
+	padding-top: 10px;
+	width: 75px;
 	color: #2C3E50;
 	border-radius: 0.25em;
 	background: #efefef;
@@ -131,11 +161,43 @@ a {
 	color: white;
 }
 
-#queer-button:checked + .button-label {
+#transgender-button:checked + .button-label {
 	background: #FF5337;
 	color: white;
 }
-#queer-button:checked + .button-label:hover {
+#transgender-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#art-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#art-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#dance-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#dance-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#theatre-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#theatre-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#music-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#music-button:checked + .button-label:hover {
 	background: #FF5337;
 	color: white;
 }

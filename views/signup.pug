@@ -7,9 +7,10 @@ html
 		
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
 
-		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript")
 		script(src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript")
 		script(src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript")
+		script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js")
 		script(type="text/javascript")
 			include ../public/js/signupJQuery.js
 		
@@ -27,22 +28,22 @@ html
 			fieldset
 				h2(class="fs-title") Personal details
 				h3(class="fs-subtitle") Step 1 - Create your account
-				input(type="text" name="fullname" placeholder="Full name")
-				input(type="text" name="email" placeholder="Email")
-				input(type="password" name="password" placeholder="Password")
-				input(type="password" name="cpass" placeholder="Confirm Password")
-				input(type='number' name='age' placeholder='Age in years')
+				input(type="text" name="fullname" id="fullname" placeholder="Full name")
+				input(type="text" name="email" id="email" placeholder="Email")
+				input(type="password" name="password" id='password' placeholder="Password")
+				input(type="password" name="cpass"  id="cpass" placeholder="Confirm Password")
+				input(type='number' min='20' max='90' name='age' id='age' placeholder='Age in years')
 
 				div.gender
-					input(type="radio" name='gender' value='male' id="male-button" class="hidden radio-label")
+					input(type="radio" name='gender' value='Male' id="male-button" class="hidden radio-label")
 					label(for="male-button" class="button-label")
 						p Male
-					input(type="radio" name='gender' value='female' id="female-button" class="hidden radio-label")
+					input(type="radio" name='gender' value='Female' id="female-button" class="hidden radio-label")
 					label(for="female-button" class="button-label")
 						p Female
-					input(type="radio" name='gender' value='queer' id="queer-button" class="hidden radio-label")
-					label(for="queer-button" class="button-label")
-						p Queer
+					input(type="radio" name='gender' value='Transgender' id="transgender-button" class="hidden radio-label")
+					label(for="transgender-button" class="button-label")
+						p Transgender
 
 				p Already have an account? 
 					a(href='/') Login
@@ -52,64 +53,125 @@ html
 			fieldset
 				h2(class="fs-title") Cultural interests
 				h3(class="fs-subtitle") Step 2 - What do you enjoy?
-				input(type="text" name="hobby" placeholder="E.g. ice skating, cooking, Malinese blues")
+				input(type="text" name="hobby" placeholder="Mention a hobby/passion, e.g. ice skating")
 
 				div(class="form-group")
-					label(class="col-xs-3 control-label") Cultural interests
-						input(type="checkbox" name='interests[]' value='dance' placeholder="Ballet/dance")
-						input(type="checkbox" name='interests[]' value='theatre' placeholder="Theatre")
-						input(type="checkbox" name='interests[]' value='art' placeholder="Art")
-						input(type="checkbox" name='interests[]' value='music' placeholder="Music")
+					h6  My cultural interests
+					div.input
+						input(type="radio" name='art' value='Art' id="art-button" class="hidden radio-label")
+						label(for="art-button" class="button-label")
+							p Art
+						input(type="radio" name='dance' value='Dance' id="dance-button" class="hidden radio-label")
+						label(for="dance-button" class="button-label")
+							p Ballet/Dance
+						input(type="radio" name='theatre' value='Theatre' id="theatre-button" class="hidden radio-label")
+						label(for="theatre-button" class="button-label")
+							p Theatre
+						input(type="radio" name='music' value='Music' id="music-button" class="hidden radio-label")
+						label(for="music-button" class="button-label")
+							p Music
 
 				div(class="form-group")
-					label(class="col-xs-3 control-label") Owns
-						input(type="checkbox" name='cultcard[]' value='museumcard' placeholder="Museumjaarkaart/ICOM")
-						input(type="checkbox" name='cultcard[]' value='music' placeholder="Concertgebouw/Bimhuis abbo")
-						input(type="checkbox" name='cultcard[]' value='wap' placeholder="We Are Public")
-						input(type="checkbox" name='cultcard[]' value='indie-4t' placeholder="Indiestadpas/Ticket to the Tropics")
-						input(type="checkbox" name='cultcard[]' value='stadspas' placeholder="Stadspas")
-						input(type="checkbox" name='cultcard[]' value='cineville' placeholder="Cineville")
+					h6  I own
+					div.input
+						input(type="radio" name='museumcard' value='Museumcard' id="museumcard-button" class="hidden radio-label")
+						label(for="museumcard-button" class="button-label")
+							p Museumjaar kaart/ICOM
+						input(type="radio" name='musicabo' value='Musicabo' id="musicabo-button" class="hidden radio-label")
+						label(for="musicabo-button" class="button-label")
+							p Concertgebouw/Bimhuis abbonement
+						input(type="radio" name='wap' value='WAP' id="wap-button" class="hidden radio-label")
+						label(for="wap-button" class="button-label")
+							p We Are Public
+						input(type="radio" name='indie4t' value='Indie-4T' id="indie-4t-button" class="hidden radio-label")
+						label(for="indie-4t-button" class="button-label")
+							p Indiestadpas/Ticket to the Tropics
+						input(type="radio" name='stadspas' value='Stadspas' id="stadspas-button" class="hidden radio-label")
+						label(for="stadspas-button" class="button-label")
+							p Stadspas
+						input(type="radio" name='cineville' value='Cineville' id="cineville-button" class="hidden radio-label")
+						label(for="cineville-button" class="button-label")
+							p Cineville
 
 				div(class="form-group")
-					label(class="col-xs-3 control-label") Talk ratio
-						input(type="checkbox" name='talkratio[]' value='bla' placeholder="BLA")
-						input(type="checkbox" name='talkratio[]' value='blabla' placeholder="BLABLA")
-						input(type="checkbox" name='talkratio[]' value='blablabla' placeholder="BLABLABLA")
+					h6  Meet people who talk
+					div.input
+						input(type="radio" name='bla' value='bla' id="bla-button" class="hidden radio-label")
+						label(for="bla-button" class="button-label")
+							p BLA
+						input(type="radio" name='blabla' value='blabla' id="blabla-button" class="hidden radio-label")
+						label(for="blabla-button" class="button-label")
+							p BLABLA
+						input(type="radio" name='blablabla' value='blablabla' id="blablabla-button" class="hidden radio-label")
+						label(for="blablabla-button" class="button-label")
+							p BLABLABLA
 
 				div(class="form-group")
-					label(class="col-xs-3 control-label") Age range
-					input(type="number" name="agerange[]" placeholder="Number in decades")
-					input(type="number" name="agerange[]" placeholder="Number in decades")
-					//-dropdown age range per decade
+					h6  Meet people with the age of
+					div.input
+						input(type="radio" name="twenthir" value='20-30' id="20-30-button" class="hidden radio-label")
+						label(for="20-30-button" class="button-label")
+							p 20-30
+						input(type="radio" name="thirfour" value='30-40' id="30-40-button" class="hidden radio-label")
+						label(for="30-40-button" class="button-label")
+							p 30-40
+						input(type="radio" name="fourfif" value='40-50' id="40-50-button" class="hidden radio-label")
+						label(for="40-50-button" class="button-label")
+							p 40-50
+						input(type="radio" name="fifsix" value='50-60' id="50-60-button" class="hidden radio-label")
+						label(for="50-60-button" class="button-label")
+							p 50-60
+						input(type="radio" name="sixsev" value='60-70' id="60-70-button" class="hidden radio-label")
+						label(for="60-70-button" class="button-label")
+							p 60-70
+						input(type="radio" name="seveigt" value='70-80' id="70-80-button" class="hidden radio-label")
+						label(for="70-80-button" class="button-label")
+							p 70-80
+						input(type="radio" name="eigtnin" value='80-90' id="80-90-button" class="hidden radio-label")
+						label(for="80-90-button" class="button-label")
+							p 80-90
 
-				div(class="buttonGroupForm")
-					label(class="col-xs-3 control-label") Gender
-					div(class="col-xs-9")
-						div(class="btn-group" data-toggle="buttons")
-							label(class="btn btn-default")
-								input(type="radio" name="gendermatch[]" value='Male')
-							label(class="btn btn-default")
-								input(type="radio" name="gendermatch[]" value='Female')
-							label(class="btn btn-default")
-								input(type="radio" name="gendermatch[]" value='Queer/other')
-
-				div(class="buttonGroupForm")
-					label(class="col-xs-3 control-label") Languages
-						div(class="btn-group" data-toggle="buttons")
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='Dutch')
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='English')
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='German')
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='French')
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='Spanish')
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='Russian')
-							label(class="btn btn-default")
-								input(type="checkbox" name="languages[]" value='Italian')
+				div(class="form-group")
+					h6  Meet people who are
+					div.input
+						input(type="radio" name="male" value='Male' id="Male-button" class="hidden radio-label")
+						label(for="Male-button" class="button-label")
+							p Male
+						input(type="radio" name="female" value='Female' id="Female-button" class="hidden radio-label")
+						label(for="Female-button" class="button-label")
+							p Female
+						input(type="radio" name="transgender" value='Transgender' id="Transgender-button" class="hidden radio-label")
+						label(for="Transgender-button" class="button-label")
+							p Transgender
+				
+				div(class="form-group")
+					h6  Meet people who speak
+					div.input
+						input(type="radio" name="dutch" value='Dutch' id="dutch-button" class="hidden radio-label")
+						label(for="dutch-button" class="button-label")
+							p Dutch
+						input(type="radio" name="english" value='English' id="english-button" class="hidden radio-label")
+						label(for="english-button" class="button-label")
+							p English
+						input(type="radio" name="german" value='German' id="german-button" class="hidden radio-label")
+						label(for="german-button" class="button-label")
+							p German
+						input(type="radio" name="french" value='French' id="french-button" class="hidden radio-label")
+						label(for="french-button" class="button-label")
+							p French
+						input(type="radio" name="spanish" value='Spanish' id="spanish-button" class="hidden radio-label")
+						label(for="spanish-button" class="button-label")
+							p Spanish
+						input(type="radio" name="italian" value='Italian' id="italian-button" class="hidden radio-label")
+						label(for="italian-button" class="button-label")
+							p Italian
+						input(type="radio" name="russian" value='Russian' id="russian-button" class="hidden radio-label")
+						label(for="russian-button" class="button-label")
+							p Russian
+						input(type="radio" name="arabic" value='Arabic' id="arabic-button" class="hidden radio-label")
+						label(for="arabic-button" class="button-label")
+							p Arabic
+				
 				input(type="button" name="previous" class="previous action-button" value='Previous')
 				input(type="button" name="next" class="next action-button" value='Next')
 
@@ -118,9 +180,6 @@ html
 				h3(class="fs-subtitle") Step 3 - Connect!
 				h3(class="fs-subtitle") Show them your friendly face
 				input(type="file" id="fileUpload" name="profileImage")
-				div
-					p
-				div(id='filePreview')
-
+			
 				input(type="button" name="previous" class="previous action-button" value='Previous')
 				input(type="submit" name="submit" class="submit action-button" value='Submit')

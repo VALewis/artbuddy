@@ -75,50 +75,81 @@ $(document).ready(function() {
 			easing: 'easeInOutBack'
 		});
 	});
-	$("#fileupload").change(function () {
-        $("#filePreview").html("");
-        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
-        if (regex.test($(this).val().toLowerCase())) {
-            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
-                $("#filePreview").show();
-                $("#filePreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
-            }
-            else {
-                if (typeof (FileReader) != "undefined") {
-                    $("#filePreview").show();
-                    $("#filePreview").append("<img />");
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        $("#filePreview img").attr("src", e.target.result);
-                    }
-                    reader.readAsDataURL($(this)[0].files[0]);
-                } else {
-                    alert("This browser does not support FileReader.");
-                }
-            }
-        } else {
-            alert("Please upload a valid image file.");
-        }
-    });
+	// $("#fileupload").change(function () {
+ //        $("#filePreview").html("");
+ //        var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+ //        if (regex.test($(this).val().toLowerCase())) {
+ //            if ($.browser.msie && parseFloat(jQuery.browser.version) <= 9.0) {
+ //                $("#filePreview").show();
+ //                $("#filePreview")[0].filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = $(this).val();
+ //            }
+ //            else {
+ //                if (typeof (FileReader) != "undefined") {
+ //                    $("#filePreview").show();
+ //                    $("#filePreview").append("<img />");
+ //                    var reader = new FileReader();
+ //                    reader.onload = function (e) {
+ //                        $("#filePreview img").attr("src", e.target.result);
+ //                    }
+ //                    reader.readAsDataURL($(this)[0].files[0]);
+ //                } else {
+ //                    alert("This browser does not support FileReader.");
+ //                }
+ //            }
+ //        } else {
+ //            alert("Please upload a valid image file.");
+ //        }
+ //    });
 });
 
 
 
-	//- $('.buttonGroupForm').formValidation({
-	//- 	framework: 'bootstrap',
-	//- 	icon: {
-	//- 		valid: 'glyphicon glyphicon-ok',
-	//- 		invalid: 'glyphicon glyphicon-remove',
-	//- 		validating: 'glyphicon glyphicon-refresh'
-	//- 	},
-	//- 	excluded: ':disabled',
-	//- 	fields: {
-	//- 		gender: {
-	//- 			validators: {
-	//- 				notEmpty: {
-	//- 					message: 'The gender is required'
-	//- 				}
-	//- 			}
-	//- 		}
-	//- 	}
-	//- });
+	// $("#msform").validate({
+	// 	rules: {
+	// 		fullname: 'required',
+	// 		password: {
+	// 			required: true,
+	// 			minlength: 8
+	// 		},
+	// 		cpassword: {
+	// 			required: true,
+	// 			minLength: 8,
+	// 			equalTo: 'password'
+	// 		},
+	// 		email: {
+	// 			required: true,
+	// 			email: true
+	// 		},
+	// 		age: {
+	// 			required: true,
+	// 			digits: true,
+	// 			min: 20,
+	// 			max: 90
+	// 		},
+	// 		gender: {
+	// 			required: true,
+	// 			max: 1
+	// 		}
+	// 	},
+	// 	messages: {
+	// 		fullname: 'Please enter your first and last name',
+	// 		password: {
+	// 			required: 'Please provide a password',
+	// 			minlength: 'Your password must be at least 8 characters long'
+	// 		},
+	// 		cpassword: {
+	// 			required: 'Please provide a password',
+	// 			minlength: 'Your password must be at least 8 characters long',
+	// 			equalTo: 'Please enter the same password as provided above'
+	// 		},
+	// 		age: {
+	// 			required: 'PLease provide your age',
+	// 			digits: 'PLease provide a valid age number in digits',
+	// 			min: 'The app is not suited for persons under 20',
+	// 			max: 'The app is not suited for persons above 90'
+	// 		},
+	// 		gender: {
+	// 			required: 'Pease provide your gender'
+	// 		}
+	// 	}
+	// });
