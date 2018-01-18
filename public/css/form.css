@@ -19,13 +19,13 @@ a {
 }
 
 /*form styles*/
-#msform {
+.msform {
 	width: 600px;
 	margin: 50px auto;
 	text-align: center;
 	position: relative;
 }
-#msform fieldset {
+.msform fieldset {
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
@@ -44,11 +44,11 @@ a {
 }
 
 /*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
+.msform fieldset:not(:first-of-type) {
 	display: none;
 }
 /*inputs*/
-#msform input, #msform textarea {
+.msform input, .msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -60,7 +60,7 @@ a {
 	font-size: 13px;
 }
 /*buttons*/
-#msform .action-button {
+.msform .action-button {
 	width: 100px;
 	background: #27AE60;
 	font-weight: bold;
@@ -70,8 +70,12 @@ a {
 	padding: 10px 5px;
 	margin: 10px 5px;
 }
-#msform .action-button:hover, #msform .action-button:focus {
+.msform .action-button:hover, .msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+div.visibility {
+	display: none;
 }
 
 
@@ -90,6 +94,25 @@ div.gender label.button-label {
 	margin: 0 10px 20px 10px;	
 	padding-top: 10px;
 	width: 90px;
+	color: #2C3E50;
+	border-radius: 0.25em;
+	background: #efefef;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+div.type label.button-label {
+	display: inline-block;
+	border-radius: 3px;
+	font-family: montserrat;
+	font-size: 9px;
+	text-align: center;
+	margin: 0 7px 20px 7px;	
+	padding-top: 10px;
+	width: 65px;
 	color: #2C3E50;
 	border-radius: 0.25em;
 	background: #efefef;

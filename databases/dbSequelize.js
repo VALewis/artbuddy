@@ -1,5 +1,6 @@
 // sequelize ============================
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const sequelize = new Sequelize(process.env.database, process.env.appUser, process.env.password, {
 	host: process.env.host,
 	dialect: 'postgres'
@@ -101,25 +102,43 @@ const Languages = sequelize.define('languages', {
     timestamps: false
 });	
 
+const Suggestion = sequelize.define('suggestion', {
+	timedate: { type: Sequelize.TEXT },
+	type: { type: Sequelize.TEXT },
+	eventname: { type: Sequelize.TEXT },
+	location: { type: Sequelize.TEXT },
+	url: { type: Sequelize.TEXT }
+	}, {
+	tableName: 'suggestion',
+	freezeTableName: true,
+    timestamps: false
+});
+
 // table associations =============
+
 // Cultinterests.belongsTo(User, { 
 // 	foreignKey: 'user_id' }) // adds user_id to Interests (references id of User)
-User.hasOne(Cultinterests, { foreignKey: 'user_id' }) // adds user_id to Interests (references id of User)
 
-Cultcard.belongsTo(User, { 
-	foreignKey: 'user_id' }) // adds user_id to Cultcard (references id of User)
+Cultinterests.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Interests (references id of User)
+User.hasOne(Cultinterests);
 
-Talkratio.belongsTo(User, { 
-	foreignKey: 'user_id' }) // adds user_id to Talkratio (references id of User)
+Cultcard.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Cultcard (references id of User)
 
-Agepref.belongsTo(User, { 
-	foreignKey: 'user_id' }) // adds user_id to Agepref (references id of User)
+Talkratio.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Talkratio (references id of User)
+
+Agepref.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Agepref (references id of User)
+User.hasOne(Agepref, { foreignKey: 'user_id' });
 
 Genderpref.belongsTo(User, { 
 	foreignKey: 'user_id' }) // adds user_id to Genderpref (references id of User)
 
 Languages.belongsTo(User, { 
 	foreignKey: 'user_id' }) // adds user_id to Languages (references id of User)
+User.hasOne(Languages);
+
+User.hasMany(Suggestion, { foreignKey: 'suggestion_id' }) // adds user_id to Suggestion (references id of User)
+
+Suggestion.belongsToMany(User, { through: 'UserSuggestion', foreignKey: 'suggestion_id',  otherKey: 'user_id' }) 
 
 module.exports = 
 dbSeq = {
@@ -130,5 +149,6 @@ dbSeq = {
 	Agepref: Agepref,
 	Genderpref: Genderpref,
 	Languages: Languages,
+	Suggestion: Suggestion,
 	sequelize: sequelize	
 };

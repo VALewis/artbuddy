@@ -36,7 +36,6 @@ app.use(session({
 	saveUnininitialized: true
 }));
 
-
 // views/middleware =================================================
 app.use(cookieparser());
 app.use(express.static('public'));
@@ -49,6 +48,8 @@ require('./routes/index.js')(app, dbSeq, bcrypt)
 require('./routes/signup.js')(app, dbSeq, bcrypt)
 require('./routes/profile.js')(app, client)
 require('./routes/buddymatch.js')(app, dbSeq)
+require('./routes/connect.js')(app, client)
+require('./routes/suggestions.js')(app, dbSeq)
 require('./routes/logout')(app)
 
 // launch app =======================================================

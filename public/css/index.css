@@ -7,13 +7,21 @@
 body {
 	font-family: montserrat, arial, verdana;
 	height: 100%;
+	width: 100%;
 	/*Image only BG fallback*/
-	
-	/*background = gradient + image pattern combo*/
-	background: 
-		linear-gradient(to top, #E3E4E8, #EBDA45 40% );
-/*			rgba(227, 228, 232, 1), rgba(235, 218, 69, 1));
-*/	}
+	/*url('../img/theatre.jpg')*/
+	background: linear-gradient(to top, #E3E4E8, #EBDA45 45%)
+
+/*	rgba(227, 228, 232, 0.35),
+	rgba(235, 218, 69, 1)),
+	url('../img/theatre.jpg')*/
+		/* */
+/*	background-repeat: no-repeat center;*/
+/*	background-size: cover;*/
+	/*background = gradient + image pattern combo
+	background-image: linear-gradient(to top, #E3E4E8, #EBDA45 55%);
+	*/
+	}
 
 	@media (min-width: 768px) {
 	    .omb_row-sm-offset-3 div:first-child[class*="col-"] {

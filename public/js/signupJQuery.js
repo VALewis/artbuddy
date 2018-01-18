@@ -1,4 +1,54 @@
 $(document).ready(function() {
+	// $("#msform").validate({
+	// 	rules: {
+	// 		fullname: 'required',
+	// 		password: {
+	// 			required: true,
+	// 			minlength: 8
+	// 		},
+	// 		cpassword: {
+	// 			required: true,
+	// 			minLength: 8,
+	// 			equalTo: 'password'
+	// 		},
+	// 		email: {
+	// 			required: true,
+	// 			email: true
+	// 		},
+	// 		age: {
+	// 			required: true,
+	// 			digits: true,
+	// 			min: 20,
+	// 			max: 90
+	// 		},
+	// 		gender: {
+	// 			required: true,
+	// 			max: 1
+	// 		}
+	// 	},
+	// 	messages: {
+	// 		fullname: 'Please enter your first and last name',
+	// 		password: {
+	// 			required: 'Please provide a password',
+	// 			minlength: 'Your password must be at least 8 characters long'
+	// 		},
+	// 		cpassword: {
+	// 			required: 'Please provide a password',
+	// 			minlength: 'Your password must be at least 8 characters long',
+	// 			equalTo: 'Please enter the same password as provided above'
+	// 		},
+	// 		age: {
+	// 			required: 'PLease provide your age',
+	// 			digits: 'PLease provide a valid age number in digits',
+	// 			min: 'The app is not suited for persons under 20',
+	// 			max: 'The app is not suited for persons above 90'
+	// 		},
+	// 		gender: {
+	// 			required: 'Pease provide your gender'
+	// 		}
+	// 	}
+	// });
+	
 	var current_fs, next_fs, previous_fs; //fieldsets
 	var left, opacity, scale; //fieldset properties which we will animate
 	var animating; //flag to prevent quick multi-click glitches
@@ -101,55 +151,3 @@ $(document).ready(function() {
  //        }
  //    });
 });
-
-
-
-	// $("#msform").validate({
-	// 	rules: {
-	// 		fullname: 'required',
-	// 		password: {
-	// 			required: true,
-	// 			minlength: 8
-	// 		},
-	// 		cpassword: {
-	// 			required: true,
-	// 			minLength: 8,
-	// 			equalTo: 'password'
-	// 		},
-	// 		email: {
-	// 			required: true,
-	// 			email: true
-	// 		},
-	// 		age: {
-	// 			required: true,
-	// 			digits: true,
-	// 			min: 20,
-	// 			max: 90
-	// 		},
-	// 		gender: {
-	// 			required: true,
-	// 			max: 1
-	// 		}
-	// 	},
-	// 	messages: {
-	// 		fullname: 'Please enter your first and last name',
-	// 		password: {
-	// 			required: 'Please provide a password',
-	// 			minlength: 'Your password must be at least 8 characters long'
-	// 		},
-	// 		cpassword: {
-	// 			required: 'Please provide a password',
-	// 			minlength: 'Your password must be at least 8 characters long',
-	// 			equalTo: 'Please enter the same password as provided above'
-	// 		},
-	// 		age: {
-	// 			required: 'PLease provide your age',
-	// 			digits: 'PLease provide a valid age number in digits',
-	// 			min: 'The app is not suited for persons under 20',
-	// 			max: 'The app is not suited for persons above 90'
-	// 		},
-	// 		gender: {
-	// 			required: 'Pease provide your gender'
-	// 		}
-	// 	}
-	// });

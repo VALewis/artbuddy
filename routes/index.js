@@ -1,8 +1,8 @@
 // home page with login links and form (render page and process info)
 module.exports = (app, dbSeq, bcrypt) => {
 	app.get('/', (req, res) => {
-	    res.render('index', {
-	    	user: req.session.user
+		res.render('index', {
+			user: req.session.user
 		});
 	});
 	app.post('/', (req, res) => {
@@ -12,8 +12,8 @@ module.exports = (app, dbSeq, bcrypt) => {
 		dbSeq.User.findOne({
 			where: { email: email },
 			include: [{
-                model: dbSeq.Cultinterests
-            }]
+				model: dbSeq.Cultinterests
+			}]
 		}).then((user) => {
 			if(user !== null) {
 				bcrypt.compare(password, user.password, (err, query) => {

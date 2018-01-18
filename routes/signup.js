@@ -1,5 +1,5 @@
 // signup with signup form (render page and process info)
-
+// const jqueryValidation = require('jquery-validation')
 const multer = require('multer'); 
 const upload = multer({ dest: '../public/img/user_images/' });
 
@@ -106,9 +106,9 @@ module.exports = (app, dbSeq, bcrypt) => {
 						console.log('user end', user)
 						//signup successful, user is redirected to secured profile route
 						req.session.user = user
-						res.redirect('profile')
+						res.redirect('/profile')
 					})				
-				}).catch(e=> {
+				}).catch(e => {
 					throw e
 				})
 			}
