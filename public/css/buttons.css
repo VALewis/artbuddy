@@ -1,0 +1,351 @@
+/*buttons*/
+.msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 3px;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+.msform .action-button:hover, .msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+div.visibility {
+	display: none;
+}
+
+
+/*@media (max-width: 40em) {
+	.button-wrap {
+	margin-top: -1.5em;
+	}
+}*/
+
+div.gender label.button-label {
+	display: inline-block;
+	border-radius: 3px;
+	font-family: montserrat;
+	font-size: 13px;
+	text-align: center;
+	margin: 0 10px 20px 10px;	
+	padding-top: 10px;
+	width: 90px;
+	color: #2C3E50;
+	border-radius: 0.25em;
+	background: #efefef;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+div.type label.button-label {
+	display: inline-block;
+	border-radius: 3px;
+	font-family: montserrat;
+	font-size: 9px;
+	text-align: center;
+	margin: 0 7px 20px 7px;	
+	padding-top: 10px;
+	width: 65px;
+	color: #2C3E50;
+	border-radius: 0.25em;
+	background: #efefef;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+
+.button-label {
+	display: inline-block;
+	border-radius: 3px;
+	font-family: montserrat;
+	font-size: 9px;
+	margin: 0 6px 6px;
+	text-align: center;	
+	word-wrap: break-word;
+	padding-top: 10px;
+	width: 75px;
+	color: #2C3E50;
+	border-radius: 0.25em;
+	background: #efefef;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+		-ms-user-select: none;
+			user-select: none;
+}
+.button-label:hover, .button-label:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #FF5337;
+}
+
+.button-label:active {
+	-webkit-transform: translateY(2px);
+			transform: translateY(2px);
+}
+/*@media (max-width: 40em) {
+	.button-label {
+	padding: 0em 1em 3px;
+	margin: 0.25em;
+	}
+}*/
+
+#male-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#male-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#female-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#female-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#transgender-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#transgender-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#art-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#art-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#dance-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#dance-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#theatre-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#theatre-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#music-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#music-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#museumcard-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#museumcard-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#musicabo-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#musicabo-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#wap-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#wap-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#indie4t-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#indie4t-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#stadspas-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#stadspas-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#cineville-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#cineville-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#bla-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#bla-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#blabla-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#blabla-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#blablabla-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#blablabla-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#twenthir-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#twenthir-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#thirfour-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#thirfour-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#fourfif-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#fourfif-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#fifsix-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#fifsix-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#sixsev-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#sixsev-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#seveight-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#seveight-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#eightnin-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#eightnin-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#dutch-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#dutch-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#english-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#english-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#german-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#german-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#french-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#french-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#spanish-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#spanish-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#italian-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#italian-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#russian-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#russian-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+#arabic-button:checked + .button-label {
+	background: #FF5337;
+	color: white;
+}
+#arabic-button:checked + .button-label:hover {
+	background: #FF5337;
+	color: white;
+}
+.hidden {
+	display: none;
+}

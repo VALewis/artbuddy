@@ -14,7 +14,7 @@ module.exports = (app, dbSeq) => {
 			include: { 
 				model: dbSeq.Agepref,
 				where: {
-						user_id: req.session.user.id
+						userAccountId: req.session.user.id
 				}
 			}
 		}).then((results1) => {
@@ -72,68 +72,42 @@ module.exports = (app, dbSeq) => {
 				}]
 			}).then((results2) => {
 				console.log('results2', results2)
-				// for (var i = 0; i < results2.length; i++) {
-				// 	return results2[i].dataValues.user_account.dataValues
-				// }
-				let buddymatching = results2[0].dataValues.user_account.dataValues
-				console.log(buddymatching)
+				let matches = []
+				for (var i = 0; i < results2.length; i++) {
+					matches.push(results2[i].dataValues.user_account.dataValues)
+				}
+				console.log('matches', matches)
+
+				let idMatches = []
+				for (var i = 0; i < matches.length; i++) {
+					idMatches.push(matches[i].id)
+				}
+				console.log('idMatches', idMatches)
+				let usersId = { id: idMatches}
+				dbSeq.User.findAll({
+					where: {
+							id: idMatches							
+						},
+					include: [
+						{ model: dbSeq.Cultcard },
+						{ model: dbSeq.Cultinterests },
+						{ model: dbSeq.Talkratio },
+						{ model: dbSeq.Languages }
+					]
+				}).then((results3) => {
+				console.log('results3 userinfo', results3[0].dataValues)
+				let buddymatches = []
+				for (var i = 0; i < results3.length; i++) {
+					buddymatches.push(results3[i].dataValues)
+				}
+				console.log('buddymatches', buddymatches)
+				req.session.user.matches = buddymatches;				
 				res.render('buddymatch', {
 					user: user,
-					buddymatching: buddymatching
+					buddymatches: buddymatches
+					});
 				});
 			});
-
 		});
 	});
 };
-
-
-// function ageMatch(rangePref) {
-// 	if (rangePref '20-30') {
-// 		for (var i = 0; i > 19; i++) {
-// 			Things[i]
-// 		}
-// 	}
-// }
-
-
-// dbSeq.User.findOne({
-// 	where: 
-// })
-// get session.user.Agepref --> put in let rangePref
-// get match users' age and put in var --> let age = results.dataValues.user_account.age
-// loop through ageArray, see if age is present --> if so, push to array
-// give users which match
-
-// let rangePref = '20-30'
-// let ageRange = new MultiRange(rangePref);
-// let ageArray = ageRange.toArray();
-// console.log(ageArray);
-
-
-// spread operator: [...]
-// array in array
-
-
-// exclude own age from list
-// exclude
-// where id: {[Op.not]}
-
-/////////////////////
-
-// dbSeq.User.findOne({
-// 	where email: req.session.user.email,
-// 	include: { model: Agepref },
-// }).then((results) => {
-// 	console.log(results)
-// })
-
-// let rangePref = user.agepref
-// let ageRange = new MultiRange(rangePref);
-// let ageArray = ageRange.toArray();
-
-// dbSeq.Agepref.findAll(
-// 	where rangeObject,  
-// 	include: model User,
-// 	where age: [...ageArray]),
-// 	exclude where id: {[Op.not] req.session.id}

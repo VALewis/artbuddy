@@ -38,7 +38,7 @@ module.exports = (app, dbSeq, bcrypt) => {
 							dance: req.body.dance,
 							theatre: req.body.theatre,
 							music: req.body.music,
-							user_id: userAccount.dataValues.id
+							userAccountId: userAccount.dataValues.id
 						})
 					}).then((userInterests) => {
 						//third: user's cultural cards
@@ -50,7 +50,7 @@ module.exports = (app, dbSeq, bcrypt) => {
 							indie4t: req.body.indie4t,
 							stadspas: req.body.stadspas,
 							cineville: req.body.cineville,
-							user_id: userInterests.dataValues.user_id
+							userAccountId: userInterests.dataValues.userAccountId
 						})						
 					}).then((userCultcard) => {
 						// fourth: user's talkratio
@@ -59,7 +59,7 @@ module.exports = (app, dbSeq, bcrypt) => {
 							bla: req.body.bla,
 							blabla: req.body.blabla,
 							blablabla: req.body.blablabla,
-							user_id: userCultcard.dataValues.user_id
+							userAccountId: userCultcard.dataValues.userAccountId
 						})
 					}).then((userTalkratio) => {
 						// fifth: user's age preference
@@ -72,7 +72,7 @@ module.exports = (app, dbSeq, bcrypt) => {
 							'61-70': req.body.sixsev,
 							'71-80': req.body.seveigt,
 							'81-90': req.body.eigtnin,
-							user_id: userTalkratio.dataValues.user_id
+							userAccountId: userTalkratio.dataValues.userAccountId
 						})
 					}).then((userAgepref) => {
 						// sixth: user's gender preference
@@ -81,7 +81,7 @@ module.exports = (app, dbSeq, bcrypt) => {
 							male: req.body.male,
 							female: req.body.female,
 							transgender: req.body.transgender,
-							user_id: userAgepref.dataValues.user_id
+							userAccountId: userAgepref.dataValues.userAccountId
 						})
 					}).then((userGenderpref) => {
 						// seventh: user's languages
@@ -95,17 +95,19 @@ module.exports = (app, dbSeq, bcrypt) => {
 							italian: req.body.italian,
 							russian: req.body.russian,
 							arabic: req.body.arabic,
-							user_id: userGenderpref.dataValues.user_id
+							userAccountId: userGenderpref.dataValues.userAccountId
 						})
 					}).then(data => {
 					// give session the user_account info and include cultural interests
 						return dbSeq.User.findOne({
 							where: { email: email }
 						}) 
-					}).then((user) => {
-						console.log('user end', user)
+					}).then((userInfo) => {
+						console.log('user end', userInfo)
+						let user = userInfo.dataValues
+						console.log(user)
 						//signup successful, user is redirected to secured profile route
-						req.session.user = user
+						req.session.user = user;
 						res.redirect('/profile')
 					})				
 				}).catch(e => {

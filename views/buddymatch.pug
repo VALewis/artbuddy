@@ -12,20 +12,26 @@ html
 		script(src="https://use.fontawesome.com/937272718b.js")
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
 		
+		style(type='text/css')
+			include ../public/css/buddymatch.css
 
 	body
 		div(class='container-intro')
-			h2 Sniff some culture, meet your art buddy!
+			h2 What are you waiting for? Meet up with your art buddy!
 			h3 Matches
 			div(class='matches')
-				div(class='firstmatch')
-					h3 #{buddymatching.fullname} (#{buddymatching.gender}, age #{buddymatching.age})
-					p Enjoys:
-					p Is interested in:
-					p Owns:
-					p Is a ... chatter
-					img(src='#{buddymatching.profile_img}')
-					p Get connected and 
-						a(href='/connect') suggest an event!
-
-
+				each match in buddymatches
+					form(class='msform')
+						fieldset
+							h3 #{match.fullname}
+							p (#{match.gender}, age #{match.age})
+							h4 Enjoys: #{match.cultural_interest}
+							h4 Is interested in:
+							h4 Owns:
+							h4 Is a ... chatter
+							h4 Would like to exchange thoughts in #{match.languages}
+							a(href="#")
+								i(class="fa fa-comments") Chat
+							br
+							a(href='/connect')
+								i(class="fa fa-envelope") Suggest an event!

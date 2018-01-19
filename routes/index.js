@@ -23,14 +23,7 @@ module.exports = (app, dbSeq, bcrypt) => {
 							fullname: user.dataValues.fullname,
 							email: user.dataValues.email,
 							age: user.dataValues.age,
-							profileImage: user.dataValues.profile_img,
-							// hobby: user.user_interest.dataValues.hobby,
-							// cultinterests: user.cultural_interests.dataValues.interests,	
-							// cultcard: user.user_interest.dataValues.cultcard,
-							// talkratio: user.user_interest.dataValues.talkratio,
-							// agerange: user.user_interest.dataValues.agerange,
-							// gendermatch: user.user_interest.dataValues.gendermatch,
-							// languages: user.user_interest.dataValues.languages
+							profileImage: user.dataValues.profile_img
 						};
 						console.log('specified user exists', req.session.user)
 						res.redirect('/profile');

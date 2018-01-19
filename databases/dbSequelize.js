@@ -116,29 +116,27 @@ const Suggestion = sequelize.define('suggestion', {
 
 // table associations =============
 
-// Cultinterests.belongsTo(User, { 
-// 	foreignKey: 'user_id' }) // adds user_id to Interests (references id of User)
-
-Cultinterests.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Interests (references id of User)
+Cultinterests.belongsTo(User) // adds userAccountId to Interests (references id of User)
 User.hasOne(Cultinterests);
 
-Cultcard.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Cultcard (references id of User)
+Cultcard.belongsTo(User) // adds userAccountId to Cultcard (references id of User)
+User.hasOne(Cultcard);
 
-Talkratio.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Talkratio (references id of User)
+Talkratio.belongsTo(User) // adds userAccountId to Talkratio (references id of User)
+User.hasOne(Talkratio);
 
-Agepref.belongsTo(User, { foreignKey: 'user_id' }) // adds user_id to Agepref (references id of User)
-User.hasOne(Agepref, { foreignKey: 'user_id' });
+Agepref.belongsTo(User) // adds userAccountId to Agepref (references id of User)
+User.hasOne(Agepref);
 
-Genderpref.belongsTo(User, { 
-	foreignKey: 'user_id' }) // adds user_id to Genderpref (references id of User)
+Genderpref.belongsTo(User) // adds userAccountId to Genderpref (references id of User)
+User.hasOne(Genderpref);
 
-Languages.belongsTo(User, { 
-	foreignKey: 'user_id' }) // adds user_id to Languages (references id of User)
+Languages.belongsTo(User) // adds userAccountId to Languages (references id of User)
 User.hasOne(Languages);
 
-User.hasMany(Suggestion, { foreignKey: 'suggestion_id' }) // adds user_id to Suggestion (references id of User)
+User.hasMany(Suggestion) // adds userAccountId to Suggestion (references id of User)
 
-Suggestion.belongsToMany(User, { through: 'UserSuggestion', foreignKey: 'suggestion_id',  otherKey: 'user_id' }) 
+Suggestion.belongsToMany(User, { through: 'UserSuggestion', foreignKey: 'suggestionId',  otherKey: 'userAccountId' }) 
 
 module.exports = 
 dbSeq = {

@@ -48,7 +48,17 @@ $(document).ready(function() {
 	// 		}
 	// 	}
 	// });
-	
+	$("input[type='radio']").click(function() {
+		var previousValue = $(this).attr('previousValue');
+		var name = $(this).attr('name');
+
+		if (previousValue == 'checked') {					
+			$(this).removeAttr('checked');
+			$(this).attr('previousValue', false);
+		} else {
+			$(this).attr('previousValue', 'checked');
+		}
+	});
 	var current_fs, next_fs, previous_fs; //fieldsets
 	var left, opacity, scale; //fieldset properties which we will animate
 	var animating; //flag to prevent quick multi-click glitches

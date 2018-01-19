@@ -15,7 +15,8 @@ module.exports = (app, client) => {
 			res.render('connect', {
 				exhibits: exhibits,
 				theatre: theatre,
-				user: req.session.user
+				user: req.session.user,
+				buddymatches: req.session.user.matches
 			});
 		});
 	});
@@ -26,12 +27,12 @@ module.exports = (app, client) => {
 			eventname: req.body.eventname,
 			location: req.body.location,
 			url: req.body.url,
-			user_id: req.session.user.id
+			userAccountId: req.session.user.id
 		}).then(data => {
 			console.log('data', data)
 		// give session the user_account info and include cultural interests
 			return dbSeq.User.findOne({
-				where: { id: data.user_id }
+				where: { id: data.userAccountId }
 			}) 
 		}).then((user) => {
 			console.log('user', user)

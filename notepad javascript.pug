@@ -1,0 +1,105 @@
+							//- 	each performance in theatre
+						//- 		option #{performance.location.name}, #{performance.location.city}
+
+						//- select(id='selectTitle' name='theatre')
+							//- each performance in theatre
+							//- 	option #{performance.title} // on #{performance.details.en.calendarsummary}
+							//- 		a(href='#{performance.urls}') #{performance.urls}
+									
+
+
+
+					//- div(class='exhibits')
+					//- 	ul(class='exhibitList')
+					//- 		each exhibition in exhibits
+					//- 			div(class='exhibition')
+					//- 				li Title #{exhibition.title} 
+					//- 				li From #{exhibition.dates.startdate} to #{exhibition.dates.enddate}
+					//- 				li Location #{exhibition.location.name}, #{exhibition.location.city}
+					//- 				a(href='#{exhibition.urls[0]}') #{exhibition.urls[0]}							
+
+					//- 	ul(class='theatre')
+					//- 		each performance in theatre
+					//- 			div(class='performance')
+					//- 				li Title #{performance.title} 
+					//- 				li On #{performance.details.en.calendarsummary}
+					//- 				li Location #{performance.location.name}, #{performance.location.city}
+					//- 				a(href='#{performance.urls}') #{performance.urls}
+					
+
+
+			//- let dropdown = $('#selectExhibition');
+			//- dropdown.empty();
+			//- dropdown.append('<option selectect="true" disabled>Choose exhibition</option>');
+			//- dropdown.prop('selectedIndex', 0);
+			//- $.getJSON('databases/JSON/tentoonstellingen.json', (result) {
+			//- 	$.each(result, (key, entry) {
+			//- 		dropdown.append($('<option></option>').attr('value', entry.location).text(entry.title));
+			//- 	});
+			//- });
+
+			
+			for(var i = 0; i < exhibitions.length; i++) {
+				exhibitOptions += '<option value="' + exhibitions[i] + '">' + exhibitions[i] + '</option>'
+			};
+			$('#selectExhibition').append(exhibitOptions);
+
+
+	
+			var exhibitions = `${exhibits}`;
+			console.log(exhibitions)
+			$.each(exhibitions, fucntion(i, option) {
+				$('#selectExhibition').append($('<option/>').attr("value", option.title).text(option.title))
+			});
+		});
+
+
+		// function ageMatch(rangePref) {
+// 	if (rangePref '20-30') {
+// 		for (var i = 0; i > 19; i++) {
+// 			Things[i]
+// 		}
+// 	}
+// }
+
+
+// dbSeq.User.findOne({
+// 	where: 
+// })
+// get session.user.Agepref --> put in let rangePref
+// get match users' age and put in var --> let age = results.dataValues.user_account.age
+// loop through ageArray, see if age is present --> if so, push to array
+// give users which match
+
+// let rangePref = '20-30'
+// let ageRange = new MultiRange(rangePref);
+// let ageArray = ageRange.toArray();
+// console.log(ageArray);
+
+
+// spread operator: [...]
+// array in array
+
+
+// exclude own age from list
+// exclude
+// where id: {[Op.not]}
+
+/////////////////////
+
+// dbSeq.User.findOne({
+// 	where email: req.session.user.email,
+// 	include: { model: Agepref },
+// }).then((results) => {
+// 	console.log(results)
+// })
+
+// let rangePref = user.agepref
+// let ageRange = new MultiRange(rangePref);
+// let ageArray = ageRange.toArray();
+
+// dbSeq.Agepref.findAll(
+// 	where rangeObject,  
+// 	include: model User,
+// 	where age: [...ageArray]),
+// 	exclude where id: {[Op.not] req.session.id}
