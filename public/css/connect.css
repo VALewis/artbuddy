@@ -1,14 +1,16 @@
+	/*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 /*basic reset*/
 * {margin: 0; padding: 0;}
+
 body {
 	font-family: montserrat, arial, verdana;
 	background-image: url('./img/background.jpg');
 	height: 100%;
 }
 
-fieldset a {
+a {
 	color: #FF5337;
 }
 
@@ -28,19 +30,8 @@ fieldset a {
 	box-sizing: border-box;
 	width: 80%;
 	margin: 0 10%;
-	
-	/*stacking fieldsets above each other*/
-	position: relative;
 }
 
-.gender {
-	margin: 0 auto;
-}
-
-/*Hide all except first fieldset*/
-.msform fieldset:not(:first-of-type) {
-	display: none;
-}
 /*inputs*/
 .msform input, .msform textarea {
 	padding: 15px;
@@ -54,25 +45,15 @@ fieldset a {
 	font-size: 13px;
 }
 
-.msform h4 {
+.form-group h6 {
+	text-align: left;
+	width: 200px;
+	margin-right: 0;
+}
+.input {
 	text-align: left;
 }
-
-.msform fieldset a, i {
-	width: 50%;
-	margin: 0 auto;
-}
-
-/*headings*/
-.fs-title {
-	font-size: 15px;
-	text-transform: uppercase;
-	color: #2C3E50;
-	margin-bottom: 10px;
-}
-.fs-subtitle {
-	font-weight: normal;
-	font-size: 13px;
-	color: #666;
-	margin-bottom: 20px;
+.list select {
+	word-wrap: break-word;
+	width: 90%;
 }

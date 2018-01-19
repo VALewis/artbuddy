@@ -17,6 +17,12 @@ body {
 a {
 	color: #FF5337;
 }
+.logo {
+	text-align: center;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+}
 
 /*form styles*/
 .msform {
@@ -67,6 +73,10 @@ a {
 }
 .input {
 	text-align: left;
+}
+.list select {
+	word-wrap: break-word;
+	width: 90%;
 }
 
 /*headings*/

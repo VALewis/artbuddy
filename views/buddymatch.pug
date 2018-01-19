@@ -14,10 +14,23 @@ html
 		
 		style(type='text/css')
 			include ../public/css/buddymatch.css
+			include ../public/css/navbar.css
 
 	body
-		div(class='container-intro')
-			h2 What are you waiting for? Meet up with your art buddy!
+		//-navbar
+		nav
+			img(class='header' src='./img/logo3-1.jpg')
+			ul(class='signChild')
+				li
+					a(href='/profile') profile
+				li 
+					a(href='/suggestions') cultural invites
+				li 
+					a(href='/logout') log out
+
+		form(class='msform')
+			h2 What are you waiting for? 
+			h2 Meet up with your art buddy!
 			h3 Matches
 			div(class='matches')
 				each match in buddymatches

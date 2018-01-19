@@ -11,74 +11,97 @@ html
 		script(src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript")
 		script(src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript")
 		
-		//- style(type='text/css')
-		//- 	include ../public/css/index.css
 		style(type='text/css')
-			include ../public/css/form.css
-		style(type='text/css')
+			include ../public/css/connect.css
 			include ../public/css/buttons.css
+			include ../public/css/navbar.css
 	
 
 	body
 		div(class='event')
-			div(class='logo')
-			img(src='./img/logo4.jpg')
-			form(class="msform" method="post" action='/connect')
+			//-navbar
+		nav
+			img(class='header' src='./img/logo3-1.jpg')
+			ul(class='signChild')
+				li
+					a(href="/profile") profile
+				li 
+					a(href='/suggestions') cultural invites
+				li 
+					a(href='/logout') log out
+
+		form(class="msform" method="post" action='/connect')
+			
+			fieldset
+				h2(class="fs-title") Hi #{buddymatches.fullname}
+				//- buddymatch name
+				h3(class="fs-subtitle") Shall we go out on
+				input(type='datetime-local' name='timedate' id='timedate')
+				h3(class="fs-subtitle") to
+				div.type
+					label(for='type') Type of event
+					input(type="radio" name='type' value='Art' id="art-button" class="hidden radio-label")
+					label(for="art-button" class="button-label")
+						p Art
+					input(type="radio" name='type' value='Dance' id="dance-button" class="hidden radio-label")
+					label(for="dance-button" class="button-label")
+						p Ballet/Dance
+					input(type="radio" name='type' value='Theatre' id="theatre-button" class="hidden radio-label")
+					label(for="theatre-button" class="button-label")
+						p Theatre
+					input(type="radio" name='type' value='Music' id="music-button" class="hidden radio-label")
+					label(for="music-button" class="button-label")
+						p Music
+
+				div(class='list visibility' id='artList')
+					select(id='selectTitle' name='exhibitionsTitle')
+						each exhibition, index in exhibits								
+							option(id=`${index}` data-location=`${exhibition.location.name}, ${exhibition.location.city}`) #{exhibition.title} // from #{exhibition.dates.startdate} to #{exhibition.dates.enddate}
+					br
+					select(id='selectLocation' name='exhibitionsLocation')
+					br
+					div(class='image')
+						img(src="./img/gallery.1.jpg")
+					div.empty
+					input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
+
+					//- 	each exhibition in exhibits
+					//- 		option #{exhibition.location.name}, #{exhibition.location.city}
+
+					//- select(id='selectTitle' name='exhibitions')
+						//- each exhibition in exhibits								
+						//- 	option #{exhibition.title} // from #{exhibition.dates.startdate} to #{exhibition.dates.enddate}
+						//- 		a(href='#{exhibition.urls[0]}') #{exhibition.urls[0]}
+
+				div(class='list visibility' id='theatreList')
+					select(id='selectTitle' name='theatreTitle') Location
+						each performance, index in theatre
+							option(id=`${index}` data-location=`${performance.location.name}, ${performance.location.city}`) #{performance.title} // on #{performance.details.en.calendarsummary}
+					br
+					select(id='selectLocation' name='theatreLocation')
+					br
+					div(class='image')
+						img(src="./img/theatre.1.jpg")
+					div.empty
+					input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
 				
-				fieldset
-					h2(class="fs-title") Hi #{buddymatches.fullname}
-					//- buddymatch name
-					h3(class="fs-subtitle") Shall we go out on
-					input(type='datetime-local' name='timedate' id='timedate')
-					h3(class="fs-subtitle") to
-					div.type
-						label(for='type') Type of event
-						input(type="radio" name='type' value='Art' id="art-button" class="hidden radio-label")
-						label(for="art-button" class="button-label")
-							p Art
-						input(type="radio" name='type' value='Dance' id="dance-button" class="hidden radio-label")
-						label(for="dance-button" class="button-label")
-							p Ballet/Dance
-						input(type="radio" name='type' value='Theatre' id="theatre-button" class="hidden radio-label")
-						label(for="theatre-button" class="button-label")
-							p Theatre
-						input(type="radio" name='type' value='Music' id="music-button" class="hidden radio-label")
-						label(for="music-button" class="button-label")
-							p Music
+				div(class='list visibility' id='fillInDance')
+					input(type='text' name='eventname' id='eventname' placeholder='title of event')
+					input(type='text' name='location' id='location' placeholder='location, city')
+					input(type='text' name='url' id='url' placeholder='include the URL link of the event')
+					div(class='image')
+						img(src="./img/ballet.1.jpg")
+					div.empty
+					input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
 
-					div(class='list visibility' id='artList')
-						select(id='selectTitle' name='exhibitionsTitle')
-							each exhibition, index in exhibits								
-								option(id=`${index}` data-location=`${exhibition.location.name}, ${exhibition.location.city}`) #{exhibition.title} // from #{exhibition.dates.startdate} to #{exhibition.dates.enddate}
-
-						select(id='selectLocation' name='exhibitionsLocation')
-						div.empty
-						input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
-
-						//- 	each exhibition in exhibits
-						//- 		option #{exhibition.location.name}, #{exhibition.location.city}
-
-						//- select(id='selectTitle' name='exhibitions')
-							//- each exhibition in exhibits								
-							//- 	option #{exhibition.title} // from #{exhibition.dates.startdate} to #{exhibition.dates.enddate}
-							//- 		a(href='#{exhibition.urls[0]}') #{exhibition.urls[0]}
-
-					div(class='list visibility' id='theatreList')
-						select(id='selectTitle' name='theatreTitle') Location
-							each performance, index in theatre
-								option(id=`${index}` data-location=`${performance.location.name}, ${performance.location.city}`) #{performance.title} // on #{performance.details.en.calendarsummary}
-
-						select(id='selectLocation' name='theatreLocation')
-
-						div.empty
-						input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
-		
-					div(class='list visibility' id='fillInList')
-						input(type='text' name='eventname' id='eventname' placeholder='title of event')
-						input(type='text' name='location' id='location' placeholder='location, city')
-						input(type='text' name='url' id='url' placeholder='include the URL link of the event')
-						div.empty
-						input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
+				div(class='list visibility' id='fillInMusic')
+					input(type='text' name='eventname' id='eventname' placeholder='title of event')
+					input(type='text' name='location' id='location' placeholder='location, city')
+					input(type='text' name='url' id='url' placeholder='include the URL link of the event')
+					div(class='image')
+						img(src="./img/concert.1.jpg")
+					div.empty
+					input(type='submit' class='action-button' value='Send suggestion' style='width: 150px')
 
 
 	script.
@@ -91,8 +114,11 @@ html
 				else if (eventtype === 'Theatre') {
 					$('#theatreList').toggle('visibility');
 				}
-				else if (eventtype === 'Dance' || eventtype === 'Music') {
-					$('#fillInList').toggle('visibility');
+				else if (eventtype === 'Dance') {
+					$('#fillInDance').toggle('visibility');
+				}
+				else if (eventtype === 'Music') {
+					$('#fillInMusic').toggle('visibility');
 				}
 			});
 			var exhibitData = !{JSON.stringify(exhibits)};
